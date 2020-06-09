@@ -8,19 +8,23 @@ class ItemsContainer extends React.Component {
   componentDidMount() {
     this.props.fetchUserItems(this.props.match.params.id);
   }
-  state = {};
 
   render() {
     return (
       <div>
-        <ItemsList items={this.props.itemsData.items} />
+        <ItemsList
+          user_id={this.props.match.params.id}
+          users={this.props.usersData.users}
+          items={this.props.itemsData.items}
+        />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ itemsData }) => ({
+const mapStateToProps = ({ itemsData, usersData }) => ({
   itemsData,
+  usersData,
 });
 
 export default connect(mapStateToProps, { fetchUserItems })(ItemsContainer);
