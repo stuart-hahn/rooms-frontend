@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 
 import HomePage from "./components/HomePage";
 import UserCreate from "./components/UserCreate";
+import NavBar from "./components/NavBar";
 
 class App extends React.Component {
   componentDidMount() {
@@ -14,6 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <NavBar currentUser={this.props.currentUser} />
         <Switch>
           <Route exact path='/users/new' component={UserCreate} />
           <Route exact path='/' component={HomePage} />
@@ -23,4 +25,8 @@ class App extends React.Component {
   }
 }
 
-export default connect(null, { fetchUsers, getCurrentUser })(App);
+const mapStateToProps = ({ currentUser }) => ({
+  currentUser,
+});
+
+export default connect(mapStateToProps, { fetchUsers, getCurrentUser })(App);

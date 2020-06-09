@@ -4,6 +4,15 @@ const addUsersToStore = (usersJSON) => ({
   usersData: usersJSON.data,
 });
 
+const setCurrentUser = (user) => ({
+  type: "SET_CURRENT_USER",
+  user,
+});
+
+const removeCurrentUser = () => ({
+  type: "REMOVE_CURRENT_USER",
+});
+
 // async
 export const createUser = (user) => {
   return (dispatch) => {
@@ -20,7 +29,13 @@ export const createUser = (user) => {
       body: JSON.stringify(body),
     })
       .then((response) => response.json())
-      .then(console.log);
+      .then((userJSON) => {
+        if (userJSON.error) {
+          console.log(userJSON.error);
+        } else {
+          dispatch(setCurrentUser(userJSON));
+        }
+      });
   };
 };
 
@@ -54,7 +69,7 @@ export const getCurrentUser = () => {
   };
 };
 
-export const logout = () => {
+export const logoutCurrentUser = () => {
   return (dispatch) => {
     return fetch("http://localhost:3001/logout", {
       method: "POST",
@@ -65,6 +80,12 @@ export const logout = () => {
       },
     })
       .then((response) => response.json())
-      .then(console.log);
+      .then((responseJSON) => {
+        if (responseJSON.error) {
+          console.log(responseJSON.error);
+        } else {
+          dispatch(removeCurrentUser());
+        }
+      });
   };
 };
