@@ -1,19 +1,25 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { logoutCurrentUser } from "../actions/usersActions";
 
 const NavBar = ({ currentUser, logoutCurrentUser }) => {
   return (
     <div className='ui secondary pointing menu'>
+      <NavLink exact className='item' to='/'>
+        Home
+      </NavLink>
       {currentUser ? (
-        <button className='ui red button' onClick={logoutCurrentUser}>
+        <button
+          className='right menu ui red button'
+          onClick={logoutCurrentUser}
+        >
           Log Out
         </button>
       ) : (
-        <Link className='ui blue button' to='/login'>
+        <NavLink exact className='right menu item' to='/login'>
           Log In
-        </Link>
+        </NavLink>
       )}
     </div>
   );
