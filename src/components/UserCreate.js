@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import { createUser } from "../actions/usersActions";
 
 class UserCreate extends React.Component {
   state = {
@@ -13,7 +16,7 @@ class UserCreate extends React.Component {
 
   onSubmitForm = (event) => {
     event.preventDefault();
-    console.log(this.state);
+    this.props.createUser(this.state);
   };
 
   render() {
@@ -41,4 +44,4 @@ class UserCreate extends React.Component {
   }
 }
 
-export default UserCreate;
+export default connect(null, { createUser })(UserCreate);
