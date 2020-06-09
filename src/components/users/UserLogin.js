@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { loginUser } from "../actions/usersActions";
+import { loginUser } from "../../actions/usersActions";
 import { Redirect } from "react-router-dom";
 
 class UserCreate extends React.Component {

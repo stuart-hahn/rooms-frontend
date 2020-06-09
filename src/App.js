@@ -4,9 +4,9 @@ import { fetchUsers, getCurrentUser } from "./actions/usersActions";
 import { Switch, Route } from "react-router-dom";
 
 import HomePage from "./components/HomePage";
-import UserCreate from "./components/UserCreate";
+import UserCreate from "./components/users/UserCreate";
 import NavBar from "./components/NavBar";
-import UserLogin from "./components/UserLogin";
+import UserLogin from "./components/users/UserLogin";
 import UsersContainer from "./containers/UsersContainer";
 
 class App extends React.Component {

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { createUser } from "../actions/usersActions";
+import { createUser } from "../../actions/usersActions";
 
 class UserCreate extends React.Component {
   state = {
