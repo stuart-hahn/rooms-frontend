@@ -15,7 +15,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className='ui container'>
         <NavBar currentUser={this.props.usersData.currentUser} />
         <Switch>
           <Route exact path='/users/new' component={UserCreate} />

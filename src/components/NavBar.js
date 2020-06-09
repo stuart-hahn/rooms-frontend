@@ -5,11 +5,15 @@ import { logoutCurrentUser } from "../actions/usersActions";
 
 const NavBar = ({ currentUser, logoutCurrentUser }) => {
   return (
-    <div>
+    <div className='ui secondary pointing menu'>
       {currentUser ? (
-        <button onClick={logoutCurrentUser}>Log Out</button>
+        <button className='ui blue button' onClick={logoutCurrentUser}>
+          Log Out
+        </button>
       ) : (
-        <Link to='/login'>Log In</Link>
+        <Link className='ui green button' to='/login'>
+          Log In
+        </Link>
       )}
     </div>
   );
