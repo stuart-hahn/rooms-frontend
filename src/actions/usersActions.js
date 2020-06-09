@@ -65,13 +65,13 @@ export const getCurrentUser = () => {
       },
     })
       .then((response) => response.json())
-      .then(console.log);
+      .then((user) => dispatch(setCurrentUser(user)));
   };
 };
 
 export const logoutCurrentUser = () => {
   return (dispatch) => {
-    return fetch("http://localhost:3001/logout", {
+    return fetch("http://localhost:3001/sessions/logout", {
       method: "POST",
       credentials: "include",
       headers: {

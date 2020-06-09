@@ -15,7 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <NavBar currentUser={this.props.currentUser} />
+        <NavBar currentUser={this.props.usersData.currentUser} />
         <Switch>
           <Route exact path='/users/new' component={UserCreate} />
           <Route exact path='/' component={HomePage} />
@@ -25,8 +25,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ currentUser }) => ({
-  currentUser,
+const mapStateToProps = ({ usersData }) => ({
+  usersData,
 });
 
 export default connect(mapStateToProps, { fetchUsers, getCurrentUser })(App);
