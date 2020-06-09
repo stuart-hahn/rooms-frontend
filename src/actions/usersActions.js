@@ -12,6 +12,7 @@ export const createUser = (user) => {
     };
     return fetch("http://localhost:3001/api/v1/users", {
       method: "POST",
+      credentials: "include",
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -25,8 +26,30 @@ export const createUser = (user) => {
 
 export const fetchUsers = () => {
   return (dispatch) => {
-    return fetch("http://localhost:3001/api/v1/users")
+    return fetch("http://localhost:3001/api/v1/users", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((usersJSON) => dispatch(addUsersToStore(usersJSON)));
+  };
+};
+
+export const getCurrentUser = () => {
+  return (dispatch) => {
+    return fetch("http://localhost:3001/sessions/get_current_user", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then(console.log);
   };
 };

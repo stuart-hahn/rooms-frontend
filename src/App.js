@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchUsers } from "./actions/usersActions";
+import { fetchUsers, getCurrentUser } from "./actions/usersActions";
 import { Switch, Route } from "react-router-dom";
 
 import HomePage from "./components/HomePage";
@@ -8,6 +8,7 @@ import UserCreate from "./components/UserCreate";
 
 class App extends React.Component {
   componentDidMount() {
+    this.props.getCurrentUser();
     this.props.fetchUsers();
   }
   render() {
@@ -22,4 +23,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(null, { fetchUsers })(App);
+export default connect(null, { fetchUsers, getCurrentUser })(App);
