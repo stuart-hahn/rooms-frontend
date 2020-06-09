@@ -7,11 +7,11 @@ const NavBar = ({ currentUser, logoutCurrentUser }) => {
   return (
     <div className='ui secondary pointing menu'>
       {currentUser ? (
-        <button className='ui blue button' onClick={logoutCurrentUser}>
+        <button className='ui red button' onClick={logoutCurrentUser}>
           Log Out
         </button>
       ) : (
-        <Link className='ui green button' to='/login'>
+        <Link className='ui blue button' to='/login'>
           Log In
         </Link>
       )}

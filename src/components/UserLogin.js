@@ -23,24 +23,30 @@ class UserCreate extends React.Component {
   render() {
     if (!this.props.currentUser) {
       return (
-        <form onSubmit={this.onSubmitForm}>
-          <label htmlFor='username'>Username</label>
-          <input
-            onChange={this.onChangeInput}
-            id='username'
-            name='username'
-            type='text'
-            placeholder='Username...'
-          />
-          <label htmlFor='password'>Password</label>
-          <input
-            onChange={this.onChangeInput}
-            id='password'
-            name='password'
-            type='password'
-            placeholder='Password...'
-          />
-          <button type='submit'>Create User</button>
+        <form className='ui form' onSubmit={this.onSubmitForm}>
+          <div className='field'>
+            <label htmlFor='username'>Username</label>
+            <input
+              onChange={this.onChangeInput}
+              id='username'
+              name='username'
+              type='text'
+              placeholder='Username...'
+            />
+          </div>
+          <div className='field'>
+            <label htmlFor='password'>Password</label>
+            <input
+              onChange={this.onChangeInput}
+              id='password'
+              name='password'
+              type='password'
+              placeholder='Password...'
+            />
+          </div>
+          <button className='ui green button' type='submit'>
+            Create User
+          </button>
         </form>
       );
     }
