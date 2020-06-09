@@ -7,7 +7,6 @@ import HomePage from "./components/HomePage";
 import UserCreate from "./components/UserCreate";
 import NavBar from "./components/NavBar";
 import UserLogin from "./components/UserLogin";
-import ItemsContainer from "./containers/ItemsContainer";
 import UsersContainer from "./containers/UsersContainer";
 
 class App extends React.Component {
@@ -21,7 +20,6 @@ class App extends React.Component {
         <NavBar currentUser={this.props.usersData.currentUser} />
         <Switch>
           <Route exact path='/users/new' component={UserCreate} />
-          <Route exact path='/users/:id/items' component={ItemsContainer} />
           <Route exact path='/users/' component={UsersContainer} />
           <Route exact path='/login' component={UserLogin} />
           <Route exact path='/' component={HomePage} />
