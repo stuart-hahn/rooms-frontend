@@ -9,6 +9,9 @@ const NavBar = ({ currentUser, logoutCurrentUser }) => {
       <NavLink exact className='item' to='/'>
         Home
       </NavLink>
+      <NavLink exact className='item' to='/users'>
+        Users
+      </NavLink>
       {currentUser ? (
         <button
           className='right menu ui red button'
