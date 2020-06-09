@@ -65,7 +65,35 @@ export const getCurrentUser = () => {
       },
     })
       .then((response) => response.json())
-      .then((user) => dispatch(setCurrentUser(user)));
+      .then((user) => {
+        if (user.message) {
+          console.log(user.message);
+        } else {
+          dispatch(setCurrentUser(user));
+        }
+      });
+  };
+};
+
+export const loginUser = (user) => {
+  return (dispatch) => {
+    return fetch("http://localhost:3001/sessions/login", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((response) => response.json())
+      .then((userJSON) => {
+        if (userJSON.error) {
+          console.log(userJSON.error);
+        } else {
+          dispatch(setCurrentUser(userJSON));
+        }
+      });
   };
 };
 

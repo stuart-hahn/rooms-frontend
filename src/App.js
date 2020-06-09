@@ -6,6 +6,7 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import UserCreate from "./components/UserCreate";
 import NavBar from "./components/NavBar";
+import UserLogin from "./components/UserLogin";
 
 class App extends React.Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ class App extends React.Component {
         <NavBar currentUser={this.props.usersData.currentUser} />
         <Switch>
           <Route exact path='/users/new' component={UserCreate} />
+          <Route exact path='/login' component={UserLogin} />
           <Route exact path='/' component={HomePage} />
         </Switch>
       </div>
