@@ -53,3 +53,18 @@ export const getCurrentUser = () => {
       .then(console.log);
   };
 };
+
+export const logout = () => {
+  return (dispatch) => {
+    return fetch("http://localhost:3001/logout", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then(console.log);
+  };
+};
