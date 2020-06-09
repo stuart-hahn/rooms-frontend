@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const UsersContainer = ({ usersData }) => {
   const renderList = () => {
     return usersData.users.map((user) => (
-      <Link className='item' to={`/users/${user.id}/items`}>
+      <Link key={user.id} className='item' to={`/users/${user.id}/items`}>
         {user.attributes.username}
       </Link>
     ));
