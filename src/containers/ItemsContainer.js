@@ -10,7 +10,8 @@ class ItemsContainer extends React.Component {
           {this.props.user.attributes.username}'s items
         </div>
         <div>
-          {this.props.currentUser.id === this.props.user.id ? (
+          {this.props.currentUser &&
+          this.props.currentUser.id === this.props.user.id ? (
             <ItemCreate user_id={this.props.currentUser.id} />
           ) : null}
         </div>

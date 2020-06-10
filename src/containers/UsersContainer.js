@@ -11,11 +11,13 @@ class UsersContainer extends React.Component {
   };
 
   onClickUser = (user) => {
-    this.setState({
-      selectedUser: user,
-    });
-    this.props.fetchUserItems(user.id);
-    this.props.history.replace(`/users/${user.id}/items`);
+    if (this.props.usersData.currentUser) {
+      this.setState({
+        selectedUser: user,
+      });
+      this.props.fetchUserItems(user.id);
+      this.props.history.replace(`/users/${user.id}/items`);
+    }
   };
 
   render() {
@@ -29,6 +31,9 @@ class UsersContainer extends React.Component {
             />
           </div>
           <div className='eleven wide column'>
+            {!this.props.usersData.currentUser ? (
+              <div>You must be logged in to see a user's items.</div>
+            ) : null}
             {this.state.selectedUser ? (
               <ItemsContainer
                 itemsData={this.props.itemsData}
