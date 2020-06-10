@@ -11,7 +11,7 @@ class ItemsContainer extends React.Component {
         </div>
         <div>
           {this.props.currentUser.id === this.props.user.id ? (
-            <ItemCreate />
+            <ItemCreate user_id={this.props.currentUser.id} />
           ) : null}
         </div>
         <div className='ui divider' />

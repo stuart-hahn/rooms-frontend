@@ -4,6 +4,11 @@ const addItemsToStore = (itemsJSON) => ({
   itemsData: itemsJSON.data,
 });
 
+const addItemToStore = (itemJSON) => ({
+  type: "ADD_ITEM_TO_STORE",
+  item: itemJSON.data,
+});
+
 // async
 export const fetchUserItems = (user_id) => {
   return (dispatch) => {
@@ -22,6 +27,27 @@ export const fetchUserItems = (user_id) => {
         } else {
           dispatch(addItemsToStore(itemsJSON));
         }
+      });
+  };
+};
+
+export const createItem = (item, user_id) => {
+  return (dispatch) => {
+    const body = {
+      name: item,
+    };
+    return fetch(`http://localhost:3001/api/v1/users/${user_id}/items`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then((response) => response.json())
+      .then((itemJSON) => {
+        dispatch(addItemToStore(itemJSON));
       });
   };
 };

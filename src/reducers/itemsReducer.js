@@ -5,6 +5,11 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case "ADD_ITEM_TO_STORE":
+      return {
+        ...state,
+        items: [...state.items, action.item],
+      };
     case "ADD_ITEMS_TO_STORE":
       return {
         ...state,
