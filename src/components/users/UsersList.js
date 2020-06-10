@@ -3,12 +3,12 @@ import User from "./User";
 
 class Users extends React.Component {
   render() {
-    const { users } = this.props;
+    const { users, onClickUser } = this.props;
     const usersList = users.map((user) => {
-      return <User key={user.id} user={user} />;
+      return <User onClickUser={onClickUser} key={user.id} user={user} />;
     });
 
-    return <ol>{usersList}</ol>;
+    return <div className='ui relaxed divided list'>{usersList}</div>;
   }
 }
 

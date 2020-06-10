@@ -2,11 +2,11 @@ import React from "react";
 
 class User extends React.Component {
   render() {
-    const { user } = this.props;
+    const { user, onClickUser } = this.props;
 
     return (
-      <div>
-        <li>{user.attributes.username}</li>
+      <div onClick={() => onClickUser(user)} className='item'>
+        {user.attributes.username}
       </div>
     );
   }
