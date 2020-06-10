@@ -8,6 +8,7 @@ import UserCreate from "./components/users/UserCreate";
 import NavBar from "./components/NavBar";
 import UserLogin from "./components/users/UserLogin";
 import UsersContainer from "./containers/UsersContainer";
+import NotFound from "./components/NotFound";
 
 class App extends React.Component {
   componentDidMount() {
@@ -24,6 +25,7 @@ class App extends React.Component {
           <Route exact path='/users/' component={UsersContainer} />
           <Route exact path='/login' component={UserLogin} />
           <Route exact path='/' component={HomePage} />
+          <Route component={NotFound} />
         </Switch>
       </div>
     );

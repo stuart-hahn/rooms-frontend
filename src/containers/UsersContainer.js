@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import UsersList from "../components/users/UsersList";
 import ItemsContainer from "../containers/ItemsContainer";
+import NotFound from "../components/NotFound";
 
 import { fetchUserItems } from "../actions/itemsActions";
 
@@ -39,7 +40,9 @@ class UsersContainer extends React.Component {
                 itemsData={this.props.itemsData}
                 user={this.state.selectedUser}
               />
-            ) : null}
+            ) : (
+              <div>Choose a user from the list</div>
+            )}
           </div>
         </div>
       </div>
