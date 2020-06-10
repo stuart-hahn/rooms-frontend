@@ -20,6 +20,7 @@ class App extends React.Component {
         <NavBar currentUser={this.props.usersData.currentUser} />
         <Switch>
           <Route exact path='/users/new' component={UserCreate} />
+          <Route exact path='/users/:id/items' component={UsersContainer} />
           <Route exact path='/users/' component={UsersContainer} />
           <Route exact path='/login' component={UserLogin} />
           <Route exact path='/' component={HomePage} />

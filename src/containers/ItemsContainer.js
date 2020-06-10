@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 class ItemsContainer extends React.Component {
   render() {
-    console.log(this.props.itemsData);
     return (
       <div className='ui segment'>
         <div className='ui header'>
