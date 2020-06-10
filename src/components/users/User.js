@@ -1,19 +1,15 @@
 import React from "react";
-import ItemsContainer from "../containers/ItemsContainer";
 
-class Restaurant extends React.Component {
+class User extends React.Component {
   render() {
     const { user } = this.props;
 
     return (
       <div>
-        <li>
-          {user.attributes.username}
-          <ItemsContainer user={user} />
-        </li>
+        <li>{user.attributes.username}</li>
       </div>
     );
   }
 }
 
-export default Restaurant;
+export default User;

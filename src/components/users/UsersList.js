@@ -8,7 +8,7 @@ class Users extends React.Component {
       return <User key={user.id} user={user} />;
     });
 
-    return <ul>{usersList}</ul>;
+    return <ol>{usersList}</ol>;
   }
 }
 
