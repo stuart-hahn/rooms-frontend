@@ -47,7 +47,11 @@ export const createItem = (item, user_id) => {
     })
       .then((response) => response.json())
       .then((itemJSON) => {
-        dispatch(addItemToStore(itemJSON));
+        if (itemJSON.error) {
+          console.log(itemJSON.error);
+        } else {
+          dispatch(addItemToStore(itemJSON));
+        }
       });
   };
 };
