@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import ItemCreate from "../components/items/ItemCreate";
 import { Redirect } from "react-router-dom";
+import ItemsList from "./ItemsList";
 
 class ItemsContainer extends React.Component {
   render() {
@@ -20,9 +21,7 @@ class ItemsContainer extends React.Component {
           ) : null}
         </div>
         <div className='ui divider' />
-        {this.props.itemsData.items.map((item) => {
-          return <li key={item.id}>{item.attributes.name}</li>;
-        })}
+        <ItemsList items={this.props.itemsData.items} />
       </div>
     );
   }
