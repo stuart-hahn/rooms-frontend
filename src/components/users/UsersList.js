@@ -8,7 +8,9 @@ class Users extends React.Component {
       return <User onClickUser={onClickUser} key={user.id} user={user} />;
     });
 
-    return <div className='ui relaxed divided list'>{usersList}</div>;
+    return (
+      <div className='ui link relaxed divided animated list'>{usersList}</div>
+    );
   }
 }
 
