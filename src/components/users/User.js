@@ -5,9 +5,13 @@ class User extends React.Component {
     const { user, onClickUser } = this.props;
 
     return (
-      <a onClick={() => onClickUser(user)} className='item'>
+      <div
+        style={{ cursor: "pointer" }}
+        onClick={() => onClickUser(user)}
+        className='item'
+      >
         {user.attributes.username}
-      </a>
+      </div>
     );
   }
 }
