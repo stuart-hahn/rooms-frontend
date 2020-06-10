@@ -14,8 +14,8 @@ const NavBar = ({ currentUser, logoutCurrentUser }) => {
       </NavLink>
       {currentUser ? (
         <button
-          className='right menu ui red button'
           onClick={logoutCurrentUser}
+          className='ui menu right red button'
         >
           Log Out
         </button>

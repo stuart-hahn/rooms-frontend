@@ -1,9 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import ItemCreate from "../components/items/ItemCreate";
+import { Redirect } from "react-router-dom";
 
 class ItemsContainer extends React.Component {
   render() {
+    if (!this.props.currentUser) {
+      return <Redirect to='/' />;
+    }
     return (
       <div className='ui segment'>
         <div className='ui header'>
@@ -11,8 +15,8 @@ class ItemsContainer extends React.Component {
         </div>
         <div>
           {this.props.currentUser &&
-          this.props.currentUser.id === this.props.user.id ? (
-            <ItemCreate user_id={this.props.currentUser.id} />
+          this.props.currentUser.data.id === this.props.user.id ? (
+            <ItemCreate user_id={this.props.currentUser.data.id} />
           ) : null}
         </div>
         <div className='ui divider' />
@@ -25,6 +29,6 @@ class ItemsContainer extends React.Component {
 }
 
 const mapStateToProps = ({ usersData }) => ({
-  currentUser: usersData.currentUser.data,
+  currentUser: usersData.currentUser,
 });
 export default connect(mapStateToProps)(ItemsContainer);
