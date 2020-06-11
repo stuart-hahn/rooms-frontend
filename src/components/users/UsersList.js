@@ -9,7 +9,7 @@ class Users extends React.Component {
     });
 
     return (
-      <div className='ui link relaxed divided animated list'>{usersList}</div>
+      <div className='ui relaxed divided animated link list'>{usersList}</div>
     );
   }
 }

@@ -3,14 +3,9 @@ import Item from "./Item";
 
 const ItemsList = ({ items, selectedItem }) => {
   const renderList = () => {
-    return items.map((item) => (
-      <Item key={item.id} item={item} />
-      // <li onClick={() => selectedItem(item)} key={item.id}>
-      //   {item.attributes.name}
-      // </li>
-    ));
+    return items.map((item) => <Item key={item.id} item={item} />);
   };
-  return <div>{renderList()}</div>;
+  return <div className='ui link relaxed animated list'>{renderList()}</div>;
 };
 
 export default ItemsList;

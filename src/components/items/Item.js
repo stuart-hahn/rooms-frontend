@@ -5,7 +5,11 @@ import { selectedItem } from "../../actions/itemsActions";
 
 const Item = ({ item, selectedItem }) => {
   return (
-    <div onClick={() => selectedItem(item)} className='item'>
+    <div
+      style={{ cursor: "pointer" }}
+      onClick={() => selectedItem(item)}
+      className='item'
+    >
       {item.attributes.name}
     </div>
   );
