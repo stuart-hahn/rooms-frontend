@@ -21,6 +21,12 @@ class ItemCreate extends React.Component {
     this.props.createItem(this.state, this.props.user_id);
   };
 
+  onChangeCheckbox = () => {
+    this.setState({
+      packed: !this.state.packed,
+    });
+  };
+
   render() {
     return (
       <form onSubmit={this.onSubmitForm} className='ui form'>
@@ -30,6 +36,7 @@ class ItemCreate extends React.Component {
             name='item'
             type='text'
             placeholder='Add item...'
+            value={this.state.item}
           />
         </div>
         <div className='field'>
@@ -38,7 +45,19 @@ class ItemCreate extends React.Component {
             name='description'
             type='text'
             placeholder='Add description...'
+            value={this.state.description}
           />
+        </div>
+        <div className='field'>
+          <div className='ui toggle checkbox'>
+            <input
+              onChange={this.onChangeCheckbox}
+              type='checkbox'
+              name='packed'
+              value={this.state.packed}
+            />
+            <label>Already Packed?</label>
+          </div>
         </div>
         <button type='submit' className='ui green button'>
           Add Item
