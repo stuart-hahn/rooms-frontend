@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import ItemCreate from "../components/items/ItemCreate";
 import { Redirect } from "react-router-dom";
 import ItemsList from "../components/items/ItemsList";
-import Item from "../components/items/Item";
+import ItemCard from "../components/items/ItemCard";
 
 class ItemsContainer extends React.Component {
   render() {
@@ -30,7 +30,7 @@ class ItemsContainer extends React.Component {
         </div>
         {this.props.itemsData.selectedItem ? (
           <div className='ui segment'>
-            <Item item={this.props.itemsData.selectedItem} />
+            <ItemCard item={this.props.itemsData.selectedItem} />
           </div>
         ) : null}
       </div>
