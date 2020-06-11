@@ -17,6 +17,7 @@ class UsersContainer extends React.Component {
       });
       this.props.fetchUserItems(user.id);
       this.props.history.replace(`/users/${user.id}/items`);
+      this.props.itemsData.selectedItem = null;
     }
   };
 
