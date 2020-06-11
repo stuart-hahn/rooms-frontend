@@ -18,7 +18,9 @@ const Item = ({ item, currentUser }) => {
         {item.attributes.packed ? "Packed" : "Still needs to be packed"}
       </div>
       {ownedItem ? (
-        <Link to={`/users/${currentUserId}/items/edit`}>Edit this item</Link>
+        <Link to={`/users/${currentUserId}/items/${item.id}/edit`}>
+          Edit this item
+        </Link>
       ) : null}
     </div>
   );
