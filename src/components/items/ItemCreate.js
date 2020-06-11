@@ -6,6 +6,8 @@ import { createItem } from "../../actions/itemsActions";
 class ItemCreate extends React.Component {
   state = {
     item: "",
+    description: "",
+    packed: false,
   };
 
   onChangeInput = (event) => {
@@ -16,18 +18,31 @@ class ItemCreate extends React.Component {
 
   onSubmitForm = (event) => {
     event.preventDefault();
-    this.props.createItem(this.state.item, this.props.user_id);
+    this.props.createItem(this.state, this.props.user_id);
   };
 
   render() {
     return (
       <form onSubmit={this.onSubmitForm} className='ui form'>
-        <input
-          onChange={this.onChangeInput}
-          name='item'
-          type='text'
-          placeholder='Add item...'
-        />
+        <div className='field'>
+          <input
+            onChange={this.onChangeInput}
+            name='item'
+            type='text'
+            placeholder='Add item...'
+          />
+        </div>
+        <div className='field'>
+          <input
+            onChange={this.onChangeInput}
+            name='description'
+            type='text'
+            placeholder='Add description...'
+          />
+        </div>
+        <button type='submit' className='ui green button'>
+          Add Item
+        </button>
       </form>
     );
   }

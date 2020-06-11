@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import ItemCreate from "../components/items/ItemCreate";
 import { Redirect } from "react-router-dom";
-import ItemsList from "./ItemsList";
+import ItemsList from "../components/items/ItemsList";
 
 class ItemsContainer extends React.Component {
   render() {

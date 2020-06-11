@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import UsersList from "../components/users/UsersList";
 import ItemsContainer from "../containers/ItemsContainer";
-import NotFound from "../components/NotFound";
 
 import { fetchUserItems } from "../actions/itemsActions";
 
@@ -54,4 +53,5 @@ const mapStateToProps = ({ usersData, itemsData }) => ({
   usersData,
   itemsData,
 });
+
 export default connect(mapStateToProps, { fetchUserItems })(UsersContainer);

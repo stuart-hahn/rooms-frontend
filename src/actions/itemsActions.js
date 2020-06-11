@@ -31,10 +31,12 @@ export const fetchUserItems = (user_id) => {
   };
 };
 
-export const createItem = (item, user_id) => {
+export const createItem = (formData, user_id) => {
   return (dispatch) => {
     const body = {
-      name: item,
+      name: formData.item,
+      description: formData.description,
+      packed: formData.packed,
     };
     return fetch(`http://localhost:3001/api/v1/users/${user_id}/items`, {
       method: "POST",
