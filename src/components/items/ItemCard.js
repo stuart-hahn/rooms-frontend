@@ -1,6 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const Item = ({ item }) => {
+import { Link } from "react-router-dom";
+
+const Item = ({ item, currentUser }) => {
+  const currentUserId = parseInt(currentUser.id, 10);
+  const itemUserId = item.attributes.user_id;
+  const ownedItem = currentUserId === itemUserId;
   return (
     <div className='ui card'>
       <div className='content'>
@@ -11,8 +17,15 @@ const Item = ({ item }) => {
         <i className='box icon' />
         {item.attributes.packed ? "Packed" : "Still needs to be packed"}
       </div>
+      {ownedItem ? (
+        <Link to={`/users/${currentUserId}/items/edit`}>Edit this item</Link>
+      ) : null}
     </div>
   );
 };
 
-export default Item;
+const mapStateToProps = ({ usersData }) => ({
+  currentUser: usersData.currentUser.data,
+});
+
+export default connect(mapStateToProps)(Item);
