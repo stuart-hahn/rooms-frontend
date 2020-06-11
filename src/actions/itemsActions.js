@@ -9,6 +9,11 @@ const addItemToStore = (itemJSON) => ({
   item: itemJSON.data,
 });
 
+export const selectedItem = (item) => ({
+  type: "SELECTED_ITEM",
+  item,
+});
+
 // async
 export const fetchUserItems = (user_id) => {
   return (dispatch) => {

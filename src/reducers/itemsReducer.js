@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   loading: false,
   items: [],
+  selectedItem: null,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -14,6 +15,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         items: action.itemsData,
+      };
+    case "SELECTED_ITEM":
+      return {
+        ...state,
+        selectedItem: action.item,
       };
     default:
       return state;
