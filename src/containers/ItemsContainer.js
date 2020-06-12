@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import ItemCreate from "../components/items/ItemCreate";
 import { Redirect } from "react-router-dom";
 import ItemsList from "../components/items/ItemsList";
@@ -14,23 +13,23 @@ class ItemsContainer extends React.Component {
       <div>
         <div className='ui segment'>
           <div className='ui header'>
-            {this.props.user.attributes.username}'s items
+            {this.props.selectedUser.attributes.username}'s items
           </div>
           <div>
             {this.props.currentUser &&
-            this.props.currentUser.data.id === this.props.user.id ? (
+            this.props.currentUser.data.id === this.props.selectedUser.id ? (
               <ItemCreate user_id={this.props.currentUser.data.id} />
             ) : null}
           </div>
           <div className='ui divider' />
           <ItemsList
             selectedItem={this.props.selectedItem}
-            itemsData={this.props.itemsData}
+            itemsData={this.props.items}
           />
         </div>
-        {this.props.itemsData.selectedItem ? (
+        {this.props.items.selectedItem ? (
           <div className='ui segment'>
-            <ItemCard item={this.props.itemsData.selectedItem} />
+            <ItemCard item={this.props.items.selectedItem} />
           </div>
         ) : null}
       </div>
@@ -38,8 +37,4 @@ class ItemsContainer extends React.Component {
   }
 }
 
-const mapStateToProps = ({ usersData, itemsData }) => ({
-  currentUser: usersData.currentUser,
-  itemsData,
-});
-export default connect(mapStateToProps)(ItemsContainer);
+export default ItemsContainer;

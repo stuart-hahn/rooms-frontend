@@ -36,7 +36,11 @@ class UsersContainer extends React.Component {
               <div>You must be logged in to see a user's items.</div>
             ) : null}
             {this.state.selectedUser ? (
-              <ItemsContainer user={this.state.selectedUser} />
+              <ItemsContainer
+                currentUser={this.props.usersData.currentUser}
+                selectedUser={this.state.selectedUser}
+                items={this.props.itemsData}
+              />
             ) : (
               <div>Choose a user from the list</div>
             )}
