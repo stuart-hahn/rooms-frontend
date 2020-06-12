@@ -2,8 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { editItem } from "../../actions/itemsActions";
+import { Redirect } from "react-router-dom";
 
-class ItemCreate extends React.Component {
+class ItemEdit extends React.Component {
   state = {
     item: "",
     description: "",
@@ -28,6 +29,10 @@ class ItemCreate extends React.Component {
   };
 
   render() {
+    const selectedItem = this.props.selectedItem;
+    if (!selectedItem) {
+      return <Redirect to='/' />;
+    }
     return (
       <form onSubmit={this.onSubmitForm} className='ui form'>
         <div className='field'>
@@ -36,7 +41,7 @@ class ItemCreate extends React.Component {
             name='item'
             type='text'
             placeholder='Add item...'
-            value={this.state.item}
+            value={selectedItem.attributes.name}
           />
         </div>
         <div className='field'>
@@ -45,7 +50,7 @@ class ItemCreate extends React.Component {
             name='description'
             type='text'
             placeholder='Add description...'
-            value={this.state.description}
+            value={selectedItem.attributes.description}
           />
         </div>
         <div className='field'>
@@ -54,17 +59,21 @@ class ItemCreate extends React.Component {
               onChange={this.onChangeCheckbox}
               type='checkbox'
               name='packed'
-              value={this.state.packed}
+              value={selectedItem.attributes.packed}
+              checked={selectedItem.attributes.packed}
             />
             <label>Already Packed?</label>
           </div>
         </div>
         <button type='submit' className='ui green button'>
-          Edit Item
+          Submit Changes
         </button>
       </form>
     );
   }
 }
 
-export default connect(null, { editItem })(ItemCreate);
+const mapStateToProps = ({ itemsData }) => ({
+  selectedItem: itemsData.selectedItem,
+});
+export default connect(mapStateToProps, { editItem })(ItemEdit);
