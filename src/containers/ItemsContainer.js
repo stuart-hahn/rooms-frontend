@@ -23,13 +23,17 @@ class ItemsContainer extends React.Component {
           </div>
           <div className='ui divider' />
           <ItemsList
+            currentUser={this.props.currentUser}
             selectedItem={this.props.selectedItem}
             itemsData={this.props.items}
           />
         </div>
         {this.props.items.selectedItem ? (
           <div className='ui segment'>
-            <ItemCard item={this.props.items.selectedItem} />
+            <ItemCard
+              currentUser={this.props.currentUser}
+              item={this.props.items.selectedItem}
+            />
           </div>
         ) : null}
       </div>

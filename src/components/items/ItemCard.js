@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item, currentUser }) => {
+  const owned = item.attributes.user_id === parseInt(currentUser.data.id, 10);
   return (
     <div className='ui card'>
       <div className='content'>
@@ -11,6 +13,13 @@ const ItemCard = ({ item }) => {
         <i className='box icon' />
         {item.attributes.packed ? "Packed" : "Still needs to be packed"}
       </div>
+      {owned ? (
+        <div>
+          <Link to={`/users/${item.attributes.user_id}/items/${item.id}/edit`}>
+            Edit
+          </Link>
+        </div>
+      ) : null}
     </div>
   );
 };
