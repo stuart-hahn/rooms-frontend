@@ -62,3 +62,23 @@ export const createItem = (formData, user_id) => {
       });
   };
 };
+
+export const editItem = (item, user_id) => {
+  return (dispatch) => {
+    const body = {
+      item,
+    };
+    return fetch(
+      `http://localhost:3001/api/v1/users/${user_id}/items/${item.id}`,
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      }
+    );
+  };
+};
