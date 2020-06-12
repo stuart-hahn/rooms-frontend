@@ -25,7 +25,7 @@ class ItemsContainer extends React.Component {
           <div className='ui divider' />
           <ItemsList
             selectedItem={this.props.selectedItem}
-            items={this.props.itemsData.items}
+            itemsData={this.props.itemsData}
           />
         </div>
         {this.props.itemsData.selectedItem ? (
@@ -38,7 +38,8 @@ class ItemsContainer extends React.Component {
   }
 }
 
-const mapStateToProps = ({ usersData }) => ({
+const mapStateToProps = ({ usersData, itemsData }) => ({
   currentUser: usersData.currentUser,
+  itemsData,
 });
 export default connect(mapStateToProps)(ItemsContainer);

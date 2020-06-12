@@ -21,11 +21,6 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         selectedItem: action.item,
       };
-    case "UPDATE_ITEM_IN_STORE":
-      return {
-        ...state,
-        [action.item.name]: action.item,
-      };
     default:
       return state;
   }

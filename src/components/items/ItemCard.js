@@ -1,11 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
 
-const Item = ({ item, user }) => {
-  const onChangeToggle = () => {
-    console.log(user);
-    console.log(!item.attributes.packed);
-  };
+const Item = ({ item }) => {
   return (
     <div className='ui card'>
       <div className='content'>
@@ -18,12 +13,7 @@ const Item = ({ item, user }) => {
       </div>
       <div className='content'>
         <div className='ui toggle checkbox'>
-          <input
-            onChange={onChangeToggle}
-            type='checkbox'
-            name='packed'
-            value={item.packed}
-          />
+          <input type='checkbox' name='packed' value={item.packed} />
           <label>Already Packed?</label>
         </div>
       </div>
@@ -31,8 +21,4 @@ const Item = ({ item, user }) => {
   );
 };
 
-const mapStateToProps = ({ usersData }) => ({
-  user: usersData.currentUser.data,
-});
-
-export default connect(mapStateToProps)(Item);
+export default Item;
