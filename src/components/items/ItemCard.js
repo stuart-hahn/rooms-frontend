@@ -15,7 +15,15 @@ const ItemCard = ({ item, currentUser }) => {
       </div>
       {owned ? (
         <div>
-          <Link to={`/users/${item.attributes.user_id}/items/${item.id}/edit`}>
+          <Link
+            to={{
+              pathname: `/users/${item.attributes.user_id}/items/${item.id}/edit`,
+              state: {
+                currentUser,
+                item,
+              },
+            }}
+          >
             Edit
           </Link>
         </div>

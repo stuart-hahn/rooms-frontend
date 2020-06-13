@@ -66,12 +66,15 @@ export const createItem = (formData, user_id) => {
 export const editItem = (item, user_id) => {
   return (dispatch) => {
     const body = {
-      item,
+      description: item.description,
+      name: item.name,
+      id: item.id,
+      packed: item.packed,
     };
     return fetch(
       `http://localhost:3001/api/v1/users/${user_id}/items/${item.id}`,
       {
-        method: "POST",
+        method: "PATCH",
         credentials: "include",
         headers: {
           "Accept": "application/json",
@@ -79,6 +82,8 @@ export const editItem = (item, user_id) => {
         },
         body: JSON.stringify(body),
       }
-    );
+    )
+      .then((response) => response.json())
+      .then(console.log);
   };
 };

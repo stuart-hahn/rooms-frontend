@@ -6,9 +6,10 @@ import { Redirect } from "react-router-dom";
 
 class ItemEdit extends React.Component {
   state = {
-    item: "",
-    description: "",
-    packed: false,
+    name: this.props.location.state.item.attributes.name,
+    description: this.props.location.state.item.attributes.description,
+    packed: this.props.location.state.item.attributes.packed,
+    id: this.props.location.state.item.id,
   };
 
   onChangeInput = (event) => {
@@ -19,7 +20,8 @@ class ItemEdit extends React.Component {
 
   onSubmitForm = (event) => {
     event.preventDefault();
-    this.props.editItem(this.state, this.props.user_id);
+    const currentUser = this.props.location.state.currentUser;
+    this.props.editItem(this.state, currentUser.data.id);
   };
 
   onChangeCheckbox = () => {
@@ -29,8 +31,8 @@ class ItemEdit extends React.Component {
   };
 
   render() {
-    const selectedItem = this.props.selectedItem;
-    if (!selectedItem) {
+    const { item } = this.props.location.state;
+    if (!item) {
       return <Redirect to='/' />;
     }
     return (
@@ -41,7 +43,7 @@ class ItemEdit extends React.Component {
             name='item'
             type='text'
             placeholder='Add item...'
-            value={selectedItem.attributes.name}
+            value={this.state.name}
           />
         </div>
         <div className='field'>
@@ -50,7 +52,7 @@ class ItemEdit extends React.Component {
             name='description'
             type='text'
             placeholder='Add description...'
-            value={selectedItem.attributes.description}
+            value={this.state.description}
           />
         </div>
         <div className='field'>
@@ -59,8 +61,8 @@ class ItemEdit extends React.Component {
               onChange={this.onChangeCheckbox}
               type='checkbox'
               name='packed'
-              value={selectedItem.attributes.packed}
-              checked={selectedItem.attributes.packed}
+              value={this.state.packed}
+              checked={this.state.packed}
             />
             <label>Already Packed?</label>
           </div>
@@ -73,7 +75,4 @@ class ItemEdit extends React.Component {
   }
 }
 
-const mapStateToProps = ({ itemsData }) => ({
-  selectedItem: itemsData.selectedItem,
-});
-export default connect(mapStateToProps, { editItem })(ItemEdit);
+export default connect(null, { editItem })(ItemEdit);
